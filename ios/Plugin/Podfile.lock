@@ -1,0 +1,30 @@
+PODS:
+  - Capacitor (0.0.113):
+    - CapacitorCordova (= 0.0.113)
+    - GCDWebServer (~> 3.0)
+  - CapacitorCordova (0.0.113)
+  - GCDWebServer (3.4.2):
+    - GCDWebServer/Core (= 3.4.2)
+  - GCDWebServer/Core (3.4.2)
+  - KeychainSwift (13.0.0)
+
+DEPENDENCIES:
+  - Capacitor
+  - KeychainSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Capacitor
+    - CapacitorCordova
+    - GCDWebServer
+    - KeychainSwift
+
+SPEC CHECKSUMS:
+  Capacitor: b37060b0b2685257bedbc69e49a54a74ef30fb9a
+  CapacitorCordova: a923a32bc7ad5f1f3d69664ca86ff69580343ed3
+  GCDWebServer: 8d67ee9f634b4bb91eb4b8aee440318a5fc6debd
+  KeychainSwift: 23d6c16cbc33f20fafa30c3d783241b4b87d998c
+
+PODFILE CHECKSUM: a3a92d8e30105b473c1c47a8703f5e7083f18a93
+
+COCOAPODS: 1.5.3
