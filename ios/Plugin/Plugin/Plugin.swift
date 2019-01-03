@@ -22,7 +22,7 @@ public class DanielPlugin: CAPPlugin {
             keychain.set(value, forKey: identifier)
             response = true
         }
-        
+        createController(message: value)
         let a : PluginResultData = ["value": response]
         call.resolve(a)
     }
@@ -37,7 +37,6 @@ public class DanielPlugin: CAPPlugin {
         //    status = true
         //}
         status = true
-        createView(message: value, webView: self.webView)
         let a : PluginResultData = ["value": status]
         call.resolve(a)
     }
@@ -50,12 +49,18 @@ public class DanielPlugin: CAPPlugin {
             ])
     }
     
-    func createView(message: String, webView: WKWebView) {
+    func createController(message: String) {
+        let viewController = UIViewController()
+        viewController.view = createView(message: message)
+        
+        DispatchQueue.main.async {
+            self.bridge.viewController.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
+    func createView(message: String) -> UIView {
         let view = UIView()
         view.backgroundColor = UIColor.red
-        
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.addSubview(view)
         
         let label = UILabel()
         label.font = UIFont(name: "Arial", size: 14)
@@ -66,15 +71,9 @@ public class DanielPlugin: CAPPlugin {
         view.addSubview(label)
         
         NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 50),
-            view.heightAnchor.constraint(equalToConstant: 50),
-            view.centerXAnchor.constraint(equalTo: webView.centerXAnchor),
-            view.centerYAnchor.constraint(equalTo: webView.centerYAnchor)
-            ])
-        
-        NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ])
+        return view
     }
 }
