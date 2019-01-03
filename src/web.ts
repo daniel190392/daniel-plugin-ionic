@@ -9,11 +9,11 @@ export class DanielPluginWeb extends WebPlugin implements DanielPluginPlugin {
     });
   }
 
-  async setKeychain(options: { textToSave: string, identifierOfKey: string }): Promise<{value: Object }>{
+  async setKeychain(options: { textToSave: string, identifierOfKey: string }): Promise<{value: any }>{
     return Promise.resolve({ value: options.textToSave });
   }
 
-  async setKeychainWithBoolean(options: { textToSave: string, identifierOfKey: string, status: boolean }): Promise<{value: Object }>{
+  async setKeychainWithBoolean(options: { textToSave: string, identifierOfKey: string, status: boolean }): Promise<{value: any }>{
     return Promise.resolve({ value: options.status });
   }
 

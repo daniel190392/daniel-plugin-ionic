@@ -8,14 +8,14 @@ export interface DanielPluginPlugin {
         textToSave: string;
         identifierOfKey: string;
     }): Promise<{
-        value: Object;
+        value: any;
     }>;
     setKeychainWithBoolean(options: {
         textToSave: string;
         identifierOfKey: string;
         status: boolean;
     }): Promise<{
-        value: Object;
+        value: any;
     }>;
     echo(options: {
         value: string;

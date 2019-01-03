@@ -23,9 +23,8 @@ public class DanielPlugin: CAPPlugin {
             response = true
         }
         
-        call.resolve([
-            "value": response
-            ])
+        let a : PluginResultData = ["value": response]
+        call.resolve(a)
     }
     
     @objc func setKeychainWithBoolean(_ call: CAPPluginCall) {
@@ -38,17 +37,44 @@ public class DanielPlugin: CAPPlugin {
         //    status = true
         //}
         status = true
-        
-        call.resolve([
-            "value": status
-            ])
+        createView(message: value, webView: self.webView)
+        let a : PluginResultData = ["value": status]
+        call.resolve(a)
     }
     
     
     
     @objc func echo(_ call: CAPPluginCall) {
-        call.success([
+        call.resolve([
             "value":"lalala"
+            ])
+    }
+    
+    func createView(message: String, webView: WKWebView) {
+        let view = UIView()
+        view.backgroundColor = UIColor.red
+        
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.addSubview(view)
+        
+        let label = UILabel()
+        label.font = UIFont(name: "Arial", size: 14)
+        label.text = message
+        label.textColor = UIColor.white
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 50),
+            view.heightAnchor.constraint(equalToConstant: 50),
+            view.centerXAnchor.constraint(equalTo: webView.centerXAnchor),
+            view.centerYAnchor.constraint(equalTo: webView.centerYAnchor)
+            ])
+        
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ])
     }
 }

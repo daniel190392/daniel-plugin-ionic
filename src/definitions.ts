@@ -5,7 +5,7 @@ declare global {
 }
 
 export interface DanielPluginPlugin {
-  setKeychain(options: { textToSave: string, identifierOfKey: string}): Promise<{value: Object }>;
-  setKeychainWithBoolean(options: { textToSave: string, identifierOfKey: string , status: boolean }): Promise<{value: Object }>;
+  setKeychain(options: { textToSave: string, identifierOfKey: string}): Promise<{value: any }>;
+  setKeychainWithBoolean(options: { textToSave: string, identifierOfKey: string , status: boolean }): Promise<{value: any }>;
   echo(options: {value: string}): Promise<{value: string}>;
 }
